@@ -1,0 +1,46 @@
+package GuessNum;
+
+import java.util.Scanner;
+
+public class GuessNum {
+	public static void main(String[] args) {
+		String option;
+
+		do {
+			int yourNum; // 你的数字
+			int randomNum;// 随机数
+			int times = 5;// 次数
+			int leftTimes;// 剩余次数
+
+			randomNum = (int) (Math.random() * 1000) + 1; // 产生一个1-1000的数字
+//			System.out.println("randomNum:" + randomNum);
+			System.out.println("I create a random num.(1-1000)");
+			System.out.println("Please you guess it:");
+
+			for (int i = 1; i <= times; i++) { // 次数为5
+
+				Scanner scan = new Scanner(System.in);
+				yourNum = scan.nextInt();
+
+				if (yourNum == randomNum) {
+					System.out.println("You guess it! Great!");
+					break;
+				} else {
+					leftTimes = times - i;
+					if (yourNum < randomNum) {
+						System.out.print("Too low! 剩余次数为" + leftTimes + " Please again:");
+					} else
+						System.out.print("Too large! 剩余次数为" + leftTimes + "Please again:");
+
+				}
+
+			}
+
+			System.out.println("Would you like to play again?(y/n)");
+			Scanner scan1 = new Scanner(System.in);
+			option = scan1.nextLine();
+
+		} while (option.equalsIgnoreCase("y")); // 字符串不能用==
+
+	}
+}
