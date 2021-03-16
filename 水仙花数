@@ -1,0 +1,30 @@
+package ShuiXianHuaNum;
+
+import java.util.Scanner;
+
+public class ShuiXianHuaNum {
+	public static void main(String args[]) {
+
+		int n;
+		int i, j;
+		int temp;
+
+		System.out.print("请输入位数n:");
+		
+		Scanner scan = new Scanner(System.in);
+		n = scan.nextInt();
+//		System.out.print(n);
+		
+		for (i = (int) (Math.pow(10, n - 1)); i <= (Math.pow(10, n)) - 1; i++) {
+			int sum = 0;
+			temp = i;
+			for (j = 1; j <= n; j++) {
+				sum = (int) (sum + Math.pow(i / (Math.pow(10, n - j)), n)) ;
+				i = (int) (i % Math.pow(10, n - j));
+			}
+			if (sum == temp) {
+				System.out.print(temp + " ");
+			}
+		}
+	}
+}
